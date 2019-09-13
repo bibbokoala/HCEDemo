@@ -44,21 +44,37 @@ var app = {
         //alert(commandAsString);
         console.log('received command ' + commandAsString);
         console.log('expecting        ' + SELECT_APDU);
+        statusDiv.innerHTML = 'received command ' + commandAsString;
+        setTimeout(function() {
+            statusDiv.innerHTML = "";
+        }, 3000);
 
         if (SELECT_APDU === commandAsString) {
             var accountNumberAsBytes = hce.util.stringToBytes(accountNumber.value);
             var data = hce.util.concatenateBuffers(accountNumberAsBytes, app.okCommand);
 
-            console.log('Sending ' + hce.util.byteArrayToHexString(data));
+            console.log('Sending ' + hce.util.byteArrayToHexString(data));       
+            statusDiv.innerHTML = 'Sending ' + hce.util.byteArrayToHexString(data);
+            setTimeout(function() {
+                statusDiv.innerHTML = "";
+            }, 3000);
             hce.sendResponse(data);
         } else {
-            console.log('UNKNOWN CMD SW');
+            console.log('UNKNOWN CMD SW');        
+            statusDiv.innerHTML = 'UNKNOWN CMD SW';
+            setTimeout(function() {
+                statusDiv.innerHTML = "";
+            }, 3000);
             hce.sendResponse(app.unknownCommand);
         }
 
     },
     onDeactivated: function(reason) {
-        console.log('Deactivated ' + reason);
+        console.log('Deactivated ' + reason);        
+        statusDiv.innerHTML = reason;
+        setTimeout(function() {
+            statusDiv.innerHTML = "";
+        }, 3000);
     }
 
 };
