@@ -28,7 +28,8 @@
 
     <plugin name="cordova-plugin-vibration" spec="~2.1.3" />
     <plugin name="cordova-plugin-x-toast" spec="~2.5.2" />
-    <plugin name="phonegap-nfc" spec="~0.6.6" />
     <!-- cordova-plugin-hce -->
+    <plugin name="cordova-plugin-hce" spec="~0.6.6" />
+    <plugin name="phonegap-nfc" spec="~0.6.6" />
     <engine name="android" spec="~6.0.0" />
 </widget>
